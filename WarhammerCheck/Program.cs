@@ -156,7 +156,7 @@ class Program
                     {
                         if (random.Next(1, 6) >= (unit_defender.Sv + unit_attacker.RangeWeapon.AP))
                         {
-                            woundsCounter++;
+                            woundsCounter += unit_attacker.RangeWeapon.D;
                         }
                     }
                 }
@@ -211,7 +211,7 @@ class Program
                     {
                         if (random.Next(1, 6) >= (unit_defender.Sv + unit_attacker.MeleeWeapon.AP))
                         {
-                            woundsCounter++;
+                            woundsCounter += unit_attacker.MeleeWeapon.D;
                         }
                     }
                 }
@@ -236,7 +236,12 @@ class Program
         MeleeWeapon marine_combatWeapon = new MeleeWeapon("Импровизированное оружие", 1, 3, 4, 0, 1, false, 0, false);
         Unit tacticalSquad = new Unit("Космодесант", "Тактический отряд", 10, 4, 2, 3, 0, 0, false, Boltgun, marine_combatWeapon);
 
-        FireCheck(tacticalSquad, infantrySquad, 10);
+        //Орочьи флешки 10 штук
+        RangeWeapon FLESHSHOOTA = new RangeWeapon("Стреляло", 3, 5, 6, 1, 2, false, 0, false, false);
+        MeleeWeapon FLESHCHOPPA = new MeleeWeapon("Рубило", 4, 3, 5, 1, 1, false, 0, false);
+        Unit FLASHGITZ = new Unit("Орки", "Флешки", 10, 5, 1, 5, 0, 0, false, FLESHSHOOTA, FLESHCHOPPA);
+
+        FireCheck(tacticalSquad, FLASHGITZ, 10);
     }
     
 }
